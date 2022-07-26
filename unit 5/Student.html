@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Student details</title>
+</head>
+
+<body>
+    
+    <div align="center">
+        <h1><u>Enter the Student details</u></h1>
+        <form action="/login" method="POST">
+            <label><h2>Enter student name </h2> </label>
+            <input type="text" name="name" class="inp" placeholder="Enter your name ">
+            <br /><br />
+            <label><h2>Enter date of birth </h2> </label>
+            <input type="datetime" name="dob" class="inp" placeholder="Enter your date of birth">
+            <br /><br />
+            <label><h2>Enter the Qualification </h2> </label>
+            <input type="text" name="qual" class="inp" placeholder="Enter Qualification">
+            <br /><br />
+            <label><h2>Enter the nationality </h2> </label>
+            <input type="text" name="nat" class="inp" placeholder="Enter the nationality">
+            <br /><br />
+
+            <label><h2>Student Photo </h2> </label>
+            <input type="file" id="image" accept="image/*" /><br/><br />
+            <img id="profile" src="#" alt="Student photo" height="150px" width="150px"/>
+            <br /><br/><br />
+            <input type="submit" value="Upload" />
+  
+        </form>
+    </div>
+
+    <script>
+        image.onchange = evt => {
+            const [file] = image.files
+            if (file) {
+                profile.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
+</body>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu.in</title>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="main">
+
+    </div>
+    <script type = "text/babel">
+        class MyOrder extends React.Component{
+            constructor(props)
+            {
+                super(props);
+                this.state = {
+                    q1 : 0,
+                    q2 : 0,
+                    q3 : 0,
+                };
+                
+            } 
+
+            wrapperStyle = {
+                display: "flex",
+                padding: "20px",
+                justifyContent: "space-around",
+                backgroundColor:"black"
+            };
+
+            itemsStyle = {
+                padding:"15px",
+                width: "max-content",
+                backgroundColor: "yellow",
+                border : "3px solid red"
+            };
+
+            productStyle = {
+               padding: "15px"
+               
+            };
+
+            descriptionStyle = {
+                paddingLeft : "15px"
+            };
+
+            priceStyle = {
+                paddingLeft : "15px"
+            };
+
+            quantityStyle = {
+                paddingLeft : "15px"
+            };
+
+            incrementStyle = {
+                position: "relative",
+                fontSize: "10px",
+                padding: "15px",
+                left: "6px",
+            };
+            prod1 = ()=>{
+                this.setState({q1: event.target.value});
+            }
+            prod2 = ()=>{
+                this.setState({q2: event.target.value});
+            }
+            prod3 = ()=>{
+                this.setState({q3: event.target.value});
+            }
+            total = ()=>{
+                return (this.state.q1*150 + this.state.q2*100 + this.state.q3*100);
+            }
+            summary =() => {
+                return (this.state.q1 + " - Pizza " + this.state.q2 + " - Burger "+ this.state.q3 + " - Roll ")
+            }
+            render(){
+                return (
+                <div id = "orders">
+                    <h2>Menu.in</h2>
+                    <div className="wrapper" style = {this.wrapperStyle}>
+                        <div className="items" style = {this.itemsStyle}>
+                            <h1 className="product" style = {this.productStyle}>Pizza</h1>
+                            <img src="pizza.jpg" width="180" height="120" className="description" style = {this.descriptionStyle} />
+                            <h3 className="price" style = {this.priceStyle} >Price:₹150</h3>
+                            <h3 className="quantity" style = {this.quantityStyle}>Quantity: {this.state.q1}</h3>
+                            <input className="increment" type="number" min="0" onClick =  {this.prod1} style = {this.incrementStyle}/>
+                        </div>
+                        <div className="items" style = {this.itemsStyle}>
+                            <h1 className="product" style = {this.productStyle}>Burger</h1>
+                            <img src="burger.jpg" width="180" height="120" className="description" style = {this.descriptionStyle} />
+                            <h3 className="price" style = {this.priceStyle} >Price:₹100</h3>
+                            <h3 className="quantity" style = {this.quantityStyle}>Quantity: {this.state.q2}</h3>
+                            <input className="increment" type="number" min="0" onClick =  {this.prod2} style = {this.incrementStyle}/>
+                        </div>
+                        <div className="items" style = {this.itemsStyle}>
+                            <h1 className="product" style = {this.productStyle}>Roll</h1>
+                            <img src="roll.jpg" width="180" height="120" className="description" style = {this.descriptionStyle} />
+                            <h3 className="price" style = {this.priceStyle} >Price:₹100</h3>
+                            <h3 className="quantity" style = {this.quantityStyle}>Quantity: {this.state.q3}</h3>
+                            <input className="increment" type="number" min="0" onClick =  {this.prod3} style = {this.incrementStyle}/>
+                        </div>
+                    </div>
+                    <h1>Total Price: ₹{this.total()}</h1>
+                    <h2>Order Summary is {this.summary()}</h2>
+                    <h3>Your Total Bill Summary is ₹{this.total()}</h3>
+                </div>)
+            }
+        }
+        ReactDOM.render(<MyOrder />, document.getElementById('main'));
+    </script>
+</body>
+</html>
